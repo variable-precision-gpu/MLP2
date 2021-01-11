@@ -321,9 +321,9 @@ float* Tensor2D::getDeviceData() {
 }
 
 float** Tensor2D::fetchDataFromDevice() {
-    float** hostData = new float*[this->sizeY];
+    float** hostData = new float*[this->sizeX];
     *hostData = new float[this->sizeY * this->sizeX];
-    for (int i = 1; i < this->sizeY; i++) hostData[i] = hostData[i-1] + this->sizeX;
+    for (int i = 1; i < this->sizeX; i++) hostData[i] = hostData[i-1] + this->sizeY;
     cudaMemcpy(*hostData, this->devData, this->sizeX*this->sizeY*sizeof(float), cudaMemcpyDeviceToHost);
     return hostData;
 }
