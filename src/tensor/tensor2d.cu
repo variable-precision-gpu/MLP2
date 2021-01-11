@@ -82,9 +82,9 @@ void kMultiplyWithSharedMemory(float* A, int aX, int aY,
 
     if (x >= outputSizeX || y >= outputSizeY) return;
 
-    extern __shared__ float sub[];
-    float* As = sub;
-    float* Bs = sub + blockDim.x * blockDim.y;
+    extern __shared__ float sb[];
+    float* As = sb;
+    float* Bs = sb + blockDim.x * blockDim.y;
 
     float sum = 0.0f;
     for (int chunk = 0; chunk < chunks; chunk++) {
@@ -156,9 +156,9 @@ void kMultiplyByTranspositionWithSharedMemory(float* A, int aX, int aY,
 
     if (x >= outputSizeX || y >= outputSizeY) return;
 
-    extern __shared__ float sub[];
-    float* As = sub;
-    float* Bs = sub + blockDim.x * blockDim.y;
+    extern __shared__ float sb[];
+    float* As = sb;
+    float* Bs = sb + blockDim.x * blockDim.y;
 
     float sum = 0.0f;
     for (int chunk = 0; chunk < chunks; chunk++) {
@@ -231,9 +231,9 @@ void kTransposeAndMultiplyWithSharedMemory(float* A, int aX, int aY,
 
     if (x >= outputSizeX || y >= outputSizeY) return;
 
-    extern __shared__ float sub[];
-    float* As = sub;
-    float* Bs = sub + elementsInChunk * elementsInChunk;
+    extern __shared__ float sb[];
+    float* As = sb;
+    float* Bs = sb + elementsInChunk * elementsInChunk;
 
     float sum = 0.0f;
     for (int chunk = 0; chunk < chunks; chunk++) {
