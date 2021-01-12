@@ -39,6 +39,53 @@ DenseLayer::DenseLayer(int input, int output) {
     delete[] initialBias;
 }
 
+void DenseLayer::write(std::ofstream& file) {
+    // Write bias
+    Tensor1D* biasTensor = getBias();
+    float* biasValues = biasTensor->fetchDataFromDevice();
+    for (int i = 0; i < biasTensor->getSize(); i++) {
+        file << std::fixed << biasValues[i] << "\n";
+    }
+
+    // Write weights
+    Tensor2D* weightsTensor = getWeights();
+    float** weightsValues = weightsTensor->fetchDataFromDevice();
+    for (int i = 0; i < weightsTensor->getSize(X); i++) {
+        for (int j = 0; j < weightsTensor->getSize(Y); j++) {
+            file << std::fixed << weightsValues[i][j] << "\n";
+        }
+    }
+
+    delete[] biasValues;
+    delete[] weightsValues;
+}
+
+void DenseLayer::read(FILE* file) {
+    // Read bias
+    float* initialBias = new float[this->output];
+    for (int x = 0; x < this->output; x++) {
+        fscanf(file, "%f", &(initialBias[x]));
+    }
+
+    // Read weights
+    float** initialWeights = new float*[this->output];
+    *initialWeights = new float[this->input * this->output];
+    for (int i = 1; i < output; i++) initialWeights[i] = initialWeights[i-1] + input;
+    for (int y = 0; y < this->output; y++) {
+        for (int x = 0; x < this->input; x++) {
+            fscanf(file, "%f", &(initialWeights[y][x]));
+        }
+    }
+
+    delete this->bias;
+    delete this->weights;
+    this->bias = new Tensor1D(this->output, initialBias);
+    this->weights = new Tensor2D(this->output, this->input, initialWeights);
+
+    delete[] initialWeights;
+    delete[] initialBias;
+}
+
 Tensor2D* DenseLayer::forward(Tensor2D* data) {
     // Save this data - will be needed for backpropagation
     this->inputData = data;

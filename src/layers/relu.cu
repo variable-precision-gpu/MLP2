@@ -25,6 +25,22 @@ ReLuLayer::ReLuLayer(int inputOutput) {
     this->outputBackward = NULL;
 }
 
+void ReLuLayer::write(std::ofstream& file) {
+    return;
+}
+
+void ReLuLayer::read(FILE* file) {
+    this->weights = NULL;
+    this->bias = NULL;
+    this->deltaWeights = NULL;
+    this->deltaBias = NULL;
+
+    // Prepare output for forward and backprop
+    this->outputForward = NULL;
+    this->outputBackward = NULL;
+    return;
+}
+
 Tensor2D* ReLuLayer::forward(Tensor2D* data) {
     this->inputData = data;
 

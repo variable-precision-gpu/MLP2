@@ -49,3 +49,19 @@ void SequentialModel::backward(Tensor2D* output, Tensor2D* labels) {
         optimizer->optimize(*layer);
     }
 }
+
+void SequentialModel::saveWeights(const char *weights_file) {
+  std::ofstream file(weights_file);
+  printf("Starting save\n");
+  for (std::vector<Layer*>::iterator layer = layers.begin(); layer != layers.end(); layer++) {
+      (*layer)->write(file);
+  }
+}
+
+void SequentialModel::loadWeights(const char *weights_file) {
+    FILE *file = fopen(weights_file, "r");
+    printf("Starting load\n");
+    for (std::vector<Layer*>::iterator layer = layers.begin(); layer != layers.end(); layer++) {
+        (*layer)->read(file);
+    }
+}

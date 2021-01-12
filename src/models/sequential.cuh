@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <cmath>
 #include <vector>
+#include <fstream>
 
 #include "../layers/layer.hpp"
 #include "../optimizers/optimizer.hpp"
@@ -27,6 +28,8 @@ public:
     void addLayer(Layer* layer);
     Tensor2D* forward(Tensor2D* input);
     void backward(Tensor2D* output, Tensor2D* layers);
+    void saveWeights(const char *weights_file);
+    void loadWeights(const char *weights_file);
 };
 
 #endif  /* !SEQUENTIAL_MODEL_HPP */

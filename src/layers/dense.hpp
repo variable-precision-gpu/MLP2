@@ -23,6 +23,9 @@ private:
 public:
     DenseLayer(int input, int output);
 
+    void write(std::ofstream& file);
+    void read(FILE* file);
+
     Tensor2D* forward(Tensor2D* data);
     Tensor2D* backward(Tensor2D* gradients);
 };
