@@ -1,8 +1,10 @@
+.DEFAULT_GOAL := build
 SOURCE_DIR = src
 DATA_DIR = data
-BUILD_DIR = build
+BUILD_DIR = .
 LOGS_DIR = logs
-EXEC_FILE = CUDA-DNN-MNIST
+EXEC_FILE_HARDWARE = mlp2_hardware
+EXEC_FILE_SIM = mlp2_sim
 
 CPU_SOURCE_FILES := $(shell find $(SOURCEDIR) -name '*.cpp')
 GPU_SOURCE_FILES := $(shell find $(SOURCEDIR) -name '*.cu')
@@ -20,7 +22,8 @@ dataset:
 
 build: FORCE
 	mkdir -p ${BUILD_DIR}
-	nvcc ${CPU_SOURCE_FILES} ${GPU_SOURCE_FILES} -lineinfo -o ${BUILD_DIR}/${EXEC_FILE}
+	nvcc ${CPU_SOURCE_FILES} ${GPU_SOURCE_FILES} -lineinfo -o ${BUILD_DIR}/${EXEC_FILE_HARDWARE}
+	nvcc ${CPU_SOURCE_FILES} ${GPU_SOURCE_FILES} -lineinfo -o ${BUILD_DIR}/${EXEC_FILE_SIM} --cudart shared -gencode arch=compute_61,code=compute_61
 
 run:
 	mkdir -p ${LOGS_DIR}
