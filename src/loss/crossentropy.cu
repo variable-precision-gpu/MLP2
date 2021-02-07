@@ -40,8 +40,10 @@ void kSoftMaxCrossEntropyLoss(float *output, int oX, int oY, float* labels, floa
         float tmpError = 0.0;
         for (int i = 0; i < oX; i++) {
             float softmaxOutput = exp(output[row*oX + i]) / sum;
-            tmpError -= labels[row*oX + i] * log(softmaxOutput) + 
-                        (1 - labels[row*oX + i]) * log(1 - softmaxOutput);
+            // [afterdusk] Replace binary cross entropy loss with regular cross entropy
+            // tmpError -= labels[row*oX + i] * log(softmaxOutput) +
+            //             (1 - labels[row*oX + i]) * log(1 - softmaxOutput);
+            tmpError -= labels[row*oX + i]*log(softmaxOutput);
         }
         atomicAdd(error, tmpError);
     }

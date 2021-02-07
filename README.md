@@ -89,7 +89,7 @@ Epoch 99:
 I've implemented basic object oriented framework with:
  - Dense Layers,
  - ReLU Layers,
- - Binary Cross Entropy Loss Function,
+ - ~~Binary Cross Entropy Loss Function,~~ Cross Entropy Loss Function,
  - SGD Optimizer,
  - Sequential Model.
 
