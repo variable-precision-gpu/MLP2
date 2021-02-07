@@ -539,9 +539,9 @@ Tensor1D* Tensor2D::meanX(Tensor1D* output) {
 
 void Tensor2D::debugPrint() {
     float** values = this->fetchDataFromDevice();
-    for (int y = 0; y < this->sizeY; y++) {
-        for (int x = 0; x < this->sizeX; x++) {
-            printf("%8.5f; ", values[y][x]);
+    for (int x = 0; x < this->sizeX; x++) {
+        for (int y = 0; y < this->sizeY; y++) {
+            printf("%8.5f; ", values[x][y]);
         }
         printf("\n");
     }
