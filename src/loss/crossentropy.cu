@@ -53,15 +53,25 @@ __global__
 void kSoftMaxCrossEntropyAccuracy(float *output, int oX, int oY, float* labels, float* accuracy) {
     int row = blockIdx.x * blockDim.x + threadIdx.x;
     if (row < oY) {
+
+        float sum = 0.0;
+        for (int i = 0; i < oX; i++) {
+            sum += exp(output[row*oX + i]);
+        }
+        if (abs(sum) < VERY_SMALL_NUMBER) {
+            sum = VERY_SMALL_NUMBER;
+        }
+
         int maxIdx = 0;
-        float maxValue = output[row*oX];
+        float maxValue = exp(output[row*oX]) / sum;
         for (int x = 1; x < oX; x++) {
-            if (output[row*oX + x] > maxValue) {
+            float softmaxOutput = exp(output[row*oX + x]) / sum;
+            if (softmaxOutput > maxValue) {
                 maxIdx = x;
-                maxValue = output[row*oX + x];
+                maxValue = softmaxOutput;
             }
         }
-        if (output[row*oX + maxIdx] > 1.0 - VERY_SMALL_NUMBER) {
+        if (labels[row*oX + maxIdx] > 1.0 - VERY_SMALL_NUMBER) {
             atomicAdd(accuracy, 1);
         }
     }
