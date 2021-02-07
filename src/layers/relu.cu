@@ -13,6 +13,17 @@ void kReLu(float *A, int aX, int aY, float* B) {
     }
 }
 
+__global__
+void kReLuDerivative(float *A, int aX, int aY, float* B) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+    if (x < aX && y < aY) {
+        if (A[y*aX + x] < 0.0) {
+            B[y*aX + x] = 0;
+        }
+    }
+}
+
 ReLuLayer::ReLuLayer(int inputOutput) {
     this->input = this->output = inputOutput;
     this->weights = NULL;
@@ -62,9 +73,9 @@ Tensor2D* ReLuLayer::backward(Tensor2D* gradients) {
     dim3 threadsPerBlock(Configuration::reLuBlockSize, Configuration::reLuBlockSize);
     dim3 numBlocks((gradients->getSize(X) + threadsPerBlock.x)/threadsPerBlock.x,
                    (gradients->getSize(Y) + threadsPerBlock.y)/threadsPerBlock.y);
-    kReLu<<<numBlocks, threadsPerBlock>>>(
-        gradients->getDeviceData(), gradients->getSize(X), gradients->getSize(Y),
+    kReLuDerivative<<<numBlocks, threadsPerBlock>>>(
+        outputForward->getDeviceData(), outputForward->getSize(X), outputForward->getSize(Y),
         gradients->getDeviceData()
     );
-    return new Tensor2D(gradients->getSize(X), gradients->getSize(Y), gradients->getDeviceData());
+    return gradients;
 }
