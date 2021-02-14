@@ -7,7 +7,7 @@
 #include <cstdio>
 
 #define DEFAULT_NUMBER_OF_EPOCHS    100
-#define DEFAULT_BATCH_SIZE          512
+#define DEFAULT_BATCH_SIZE          500
 #define DEFAULT_LEARNING_RATE       1e-06
 
 #define DEFAULT_TENSOR2D_ADD_BLOCK_SIZE         8

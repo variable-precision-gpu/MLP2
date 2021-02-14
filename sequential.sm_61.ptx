@@ -1,0 +1,21 @@
+
+
+
+
+
+
+
+
+.version 5.0
+.target sm_61
+.address_size 64
+
+.global .align 8 .b8 _ZTVSt9basic_iosIcSt11char_traitsIcEE[32];
+.global .align 8 .b8 _ZTTSo[8];
+.global .align 8 .b8 _ZTVSt15basic_streambufIcSt11char_traitsIcEE[128];
+.global .align 8 .b8 _ZTVSt13basic_filebufIcSt11char_traitsIcEE[128];
+.global .align 8 .b8 _ZTTSt14basic_ofstreamIcSt11char_traitsIcEE[8];
+
+.file	1 "/home/evan/Projects/sim-dl-runner/programs/MLP2/./src/models/sequential.cu", 1612246409, 2416
+.file	2 "/usr/local/cuda-8.0/include/cuda_device_runtime_api.h", 1596964847, 13858
+

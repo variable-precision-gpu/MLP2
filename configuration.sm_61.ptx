@@ -1,0 +1,16 @@
+
+
+
+
+
+
+
+
+.version 5.0
+.target sm_61
+.address_size 64
+
+
+.file	1 "/home/evan/Projects/sim-dl-runner/programs/MLP2/./src/configuration.cu", 1610454834, 4471
+.file	2 "/usr/local/cuda-8.0/include/cuda_device_runtime_api.h", 1596964847, 13858
+

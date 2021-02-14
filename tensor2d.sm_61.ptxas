@@ -1,0 +1,45 @@
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z40kMultiplyByTranspositionWithSharedMemoryPfiiS_iiS_' for 'sm_61'
+ptxas info    : Function properties for _Z40kMultiplyByTranspositionWithSharedMemoryPfiiS_iiS_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 26 registers, 360 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z6kScalePffii' for 'sm_61'
+ptxas info    : Function properties for _Z6kScalePffii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 6 registers, 340 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z25kMultiplyWithSharedMemoryPfiiS_iiS_' for 'sm_61'
+ptxas info    : Function properties for _Z25kMultiplyWithSharedMemoryPfiiS_iiS_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 26 registers, 360 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z6kAdd2DPfS_ii' for 'sm_61'
+ptxas info    : Function properties for _Z6kAdd2DPfS_ii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 6 registers, 344 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z37kTransposeAndMultiplyWithSharedMemoryPfiiS_iiS_' for 'sm_61'
+ptxas info    : Function properties for _Z37kTransposeAndMultiplyWithSharedMemoryPfiiS_iiS_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 27 registers, 360 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z9kMultiplyiiiiPfiiS_iiS_' for 'sm_61'
+ptxas info    : Function properties for _Z9kMultiplyiiiiPfiiS_iiS_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 29 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z6kAdd1DPfS_ii' for 'sm_61'
+ptxas info    : Function properties for _Z6kAdd1DPfS_ii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 6 registers, 344 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z21kTransposeAndMultiplyiiiiPfiiS_iiS_' for 'sm_61'
+ptxas info    : Function properties for _Z21kTransposeAndMultiplyiiiiPfiiS_iiS_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 28 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z24kMultiplyByTranspositioniiiiPfiiS_iiS_' for 'sm_61'
+ptxas info    : Function properties for _Z24kMultiplyByTranspositioniiiiPfiiS_iiS_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 29 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z9kSubtractPfS_ii' for 'sm_61'
+ptxas info    : Function properties for _Z9kSubtractPfS_ii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 6 registers, 344 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z6kMeanXPfiiS_' for 'sm_61'
+ptxas info    : Function properties for _Z6kMeanXPfiiS_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 16 registers, 344 bytes cmem[0], 12 bytes cmem[2]

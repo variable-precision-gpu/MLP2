@@ -1,0 +1,146 @@
+
+
+
+
+
+
+
+
+.version 5.0
+.target sm_61
+.address_size 64
+
+
+.global .align 8 .b8 _ZTV5Layer[48];
+.global .align 8 .b8 _ZTV9ReLuLayer[48];
+
+.visible .entry _Z5kReLuPfiiS_(
+.param .u64 _Z5kReLuPfiiS__param_0,
+.param .u32 _Z5kReLuPfiiS__param_1,
+.param .u32 _Z5kReLuPfiiS__param_2,
+.param .u64 _Z5kReLuPfiiS__param_3
+)
+{
+.reg .pred %p<5>;
+.reg .f32 %f<2>;
+.reg .b32 %r<13>;
+.reg .b64 %rd<8>;
+
+
+ld.param.u64 %rd2, [_Z5kReLuPfiiS__param_0];
+ld.param.u32 %r3, [_Z5kReLuPfiiS__param_1];
+ld.param.u32 %r4, [_Z5kReLuPfiiS__param_2];
+ld.param.u64 %rd3, [_Z5kReLuPfiiS__param_3];
+.loc 1 5 1
+mov.u32 %r5, %ctaid.x;
+mov.u32 %r6, %ntid.x;
+mov.u32 %r7, %tid.x;
+mad.lo.s32 %r1, %r6, %r5, %r7;
+.loc 1 6 1
+mov.u32 %r8, %ntid.y;
+mov.u32 %r9, %ctaid.y;
+mov.u32 %r10, %tid.y;
+mad.lo.s32 %r2, %r8, %r9, %r10;
+.loc 1 7 1
+setp.lt.s32	%p1, %r1, %r3;
+setp.lt.s32	%p2, %r2, %r4;
+and.pred %p3, %p1, %p2;
+@!%p3 bra BB0_4;
+bra.uni BB0_1;
+
+BB0_1:
+.loc 1 5 1
+cvta.to.global.u64 %rd4, %rd2;
+.loc 1 8 1
+mad.lo.s32 %r11, %r2, %r3, %r1;
+mul.wide.s32 %rd5, %r11, 4;
+add.s64 %rd6, %rd4, %rd5;
+ld.global.f32 %f1, [%rd6];
+setp.lt.vf32	%p4, %f1, 0f00000000;
+.loc 1 5 1
+cvta.to.global.u64 %rd7, %rd3;
+.loc 1 9 1
+add.s64 %rd1, %rd7, %rd5;
+.loc 1 8 1
+@%p4 bra BB0_3;
+bra.uni BB0_2;
+
+BB0_3:
+mov.u32 %r12, 0;
+.loc 1 9 1
+st.global.u32 [%rd1], %r12;
+bra.uni BB0_4;
+
+BB0_2:
+.loc 1 11 1
+st.global.f32 [%rd1], %f1;
+
+BB0_4:
+.loc 1 14 2
+ret;
+}
+
+
+.visible .entry _Z15kReLuDerivativePfiiS_(
+.param .u64 _Z15kReLuDerivativePfiiS__param_0,
+.param .u32 _Z15kReLuDerivativePfiiS__param_1,
+.param .u32 _Z15kReLuDerivativePfiiS__param_2,
+.param .u64 _Z15kReLuDerivativePfiiS__param_3
+)
+{
+.reg .pred %p<5>;
+.reg .f32 %f<2>;
+.reg .b32 %r<13>;
+.reg .b64 %rd<10>;
+
+
+ld.param.u64 %rd2, [_Z15kReLuDerivativePfiiS__param_0];
+ld.param.u32 %r3, [_Z15kReLuDerivativePfiiS__param_1];
+ld.param.u32 %r4, [_Z15kReLuDerivativePfiiS__param_2];
+ld.param.u64 %rd3, [_Z15kReLuDerivativePfiiS__param_3];
+.loc 1 18 1
+mov.u32 %r5, %ntid.x;
+mov.u32 %r6, %ctaid.x;
+mov.u32 %r7, %tid.x;
+mad.lo.s32 %r1, %r5, %r6, %r7;
+.loc 1 19 1
+mov.u32 %r8, %ntid.y;
+mov.u32 %r9, %ctaid.y;
+mov.u32 %r10, %tid.y;
+mad.lo.s32 %r2, %r8, %r9, %r10;
+.loc 1 20 1
+setp.lt.s32	%p1, %r1, %r3;
+setp.lt.s32	%p2, %r2, %r4;
+and.pred %p3, %p1, %p2;
+@!%p3 bra BB1_3;
+bra.uni BB1_1;
+
+BB1_1:
+.loc 1 18 1
+cvta.to.global.u64 %rd4, %rd2;
+.loc 1 21 1
+mad.lo.s32 %r11, %r2, %r3, %r1;
+cvt.s64.s32	%rd1, %r11;
+mul.wide.s32 %rd5, %r11, 4;
+add.s64 %rd6, %rd4, %rd5;
+ld.global.f32 %f1, [%rd6];
+setp.geu.vf32	%p4, %f1, 0f00000000;
+@%p4 bra BB1_3;
+
+.loc 1 18 1
+cvta.to.global.u64 %rd7, %rd3;
+.loc 1 22 1
+shl.b64 %rd8, %rd1, 2;
+add.s64 %rd9, %rd7, %rd8;
+mov.u32 %r12, 0;
+.loc 1 22 1
+st.global.u32 [%rd9], %r12;
+
+BB1_3:
+.loc 1 25 2
+ret;
+}
+
+.file	1 "/home/evan/Projects/sim-dl-runner/programs/MLP2/./src/layers/relu.cu", 1612709084, 2561
+.file	2 "/usr/local/cuda-8.0/include/cuda_device_runtime_api.h", 1596964847, 13858
+

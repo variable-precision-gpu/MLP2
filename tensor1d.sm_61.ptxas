@@ -1,0 +1,13 @@
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z9kSubtractPfS_i' for 'sm_61'
+ptxas info    : Function properties for _Z9kSubtractPfS_i
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 6 registers, 340 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z4kAddPfS_i' for 'sm_61'
+ptxas info    : Function properties for _Z4kAddPfS_i
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 6 registers, 340 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z6kScalePffi' for 'sm_61'
+ptxas info    : Function properties for _Z6kScalePffi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 4 registers, 336 bytes cmem[0]

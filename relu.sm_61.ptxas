@@ -1,0 +1,9 @@
+ptxas info    : 96 bytes gmem
+ptxas info    : Compiling entry function '_Z15kReLuDerivativePfiiS_' for 'sm_61'
+ptxas info    : Function properties for _Z15kReLuDerivativePfiiS_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 6 registers, 344 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z5kReLuPfiiS_' for 'sm_61'
+ptxas info    : Function properties for _Z5kReLuPfiiS_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 6 registers, 344 bytes cmem[0]
