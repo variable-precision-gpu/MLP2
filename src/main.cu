@@ -107,9 +107,15 @@ int main(int argc, char *argv[]) {
 
   // Prepare model
   SequentialModel* model = new SequentialModel(optimizer, loss);
-  model->addLayer(new DenseLayer(28*28, 100));
-  model->addLayer(new ReLuLayer(100));
-  model->addLayer(new DenseLayer(100, 10));
+  model->addLayer(new DenseLayer(28*28, 128));
+  model->addLayer(new ReLuLayer(128));
+  model->addLayer(new DenseLayer(128, 64));
+  model->addLayer(new ReLuLayer(64));
+  model->addLayer(new DenseLayer(64, 10));
+
+  // model->addLayer(new DenseLayer(28*28, 512));
+  // model->addLayer(new ReLuLayer(512));
+  // model->addLayer(new DenseLayer(512, 10));
 
   if (strcmp(argv[1], "-train") == 0) {
       assert(argc == 4 && "Please provide the number of epochs and weights file");

@@ -1,0 +1,621 @@
+
+
+
+
+
+
+
+
+.version 5.0
+.target sm_61
+.address_size 64
+
+
+.extern .func (.param .b32 func_retval0) vprintf
+(
+.param .b64 vprintf_param_0,
+.param .b64 vprintf_param_1
+)
+;
+.global .align 8 .b8 _ZTV12LossFunction[40];
+.global .align 8 .b8 _ZTV16CrossEntropyLoss[40];
+.global .align 1 .b8 $str[17] = {77, 85, 76, 84, 73, 80, 76, 69, 32, 65, 78, 83, 87, 69, 82, 83, 0};
+
+.visible .entry _Z20kSoftMaxCrossEntropyPfiiS_S_(
+.param .u64 _Z20kSoftMaxCrossEntropyPfiiS_S__param_0,
+.param .u32 _Z20kSoftMaxCrossEntropyPfiiS_S__param_1,
+.param .u32 _Z20kSoftMaxCrossEntropyPfiiS_S__param_2,
+.param .u64 _Z20kSoftMaxCrossEntropyPfiiS_S__param_3,
+.param .u64 _Z20kSoftMaxCrossEntropyPfiiS_S__param_4
+)
+{
+.reg .pred %p<11>;
+.reg .f32 %f<40>;
+.reg .b32 %r<19>;
+.reg .f64 %fd<2>;
+.reg .b64 %rd<25>;
+
+
+ld.param.u64 %rd16, [_Z20kSoftMaxCrossEntropyPfiiS_S__param_0];
+ld.param.u32 %r8, [_Z20kSoftMaxCrossEntropyPfiiS_S__param_1];
+ld.param.u32 %r9, [_Z20kSoftMaxCrossEntropyPfiiS_S__param_2];
+ld.param.u64 %rd14, [_Z20kSoftMaxCrossEntropyPfiiS_S__param_3];
+ld.param.u64 %rd15, [_Z20kSoftMaxCrossEntropyPfiiS_S__param_4];
+.loc 1 7 1
+cvta.to.global.u64 %rd1, %rd16;
+mov.u32 %r1, %ntid.x;
+mov.u32 %r2, %ctaid.x;
+mov.u32 %r3, %tid.x;
+mad.lo.s32 %r10, %r1, %r2, %r3;
+.loc 1 8 1
+setp.ge.s32	%p1, %r10, %r9;
+@%p1 bra BB0_7;
+
+mov.f32 %f39, 0f00000000;
+.loc 1 29 1
+setp.lt.s32	%p2, %r8, 1;
+@%p2 bra BB0_4;
+
+.loc 1 30 1
+mul.lo.s32 %r13, %r8, %r10;
+mul.wide.s32 %rd17, %r13, 4;
+add.s64 %rd21, %rd1, %rd17;
+mov.f32 %f39, 0f00000000;
+mov.u32 %r17, 0;
+
+BB0_3:
+.loc 1 30 1
+ld.global.f32 %f9, [%rd21];
+.loc 4 1299 12
+mul.vf32 %f10, %f9, 0f3FB8AA3B;
+cvt.rzi.vf32.vf32	%f11, %f10;
+mov.f32 %f12, 0fBF317200;
+.loc 4 1299 12
+fma.rn.vf32 %f13, %f11, %f12, %f9;
+mov.f32 %f14, 0fB5BFBE8E;
+.loc 4 1299 12
+fma.rn.vf32 %f15, %f11, %f14, %f13;
+mul.vf32 %f8, %f15, 0f3FB8AA3B;
+
+	ex2.approx.ftz.vf32 %f7,%f8;
+
+	add.vf32 %f16, %f11, 0f00000000;
+ex2.approx.f32 %f17, %f16;
+mul.vf32 %f18, %f7, %f17;
+setp.lt.vf32	%p3, %f9, 0fC2D20000;
+selp.f32	%f19, 0f00000000, %f18, %p3;
+setp.gt.vf32	%p4, %f9, 0f42D20000;
+selp.f32	%f20, 0f7F800000, %f19, %p4;
+.loc 1 30 128
+add.vf32 %f39, %f39, %f20;
+.loc 1 29 1
+add.s64 %rd21, %rd21, 4;
+.loc 1 29 18
+add.s32 %r17, %r17, 1;
+.loc 1 29 1
+setp.lt.s32	%p5, %r17, %r8;
+@%p5 bra BB0_3;
+
+BB0_4:
+.loc 1 38 1
+@%p2 bra BB0_7;
+
+.loc 1 7 1
+cvta.to.global.u64 %rd18, %rd15;
+cvta.to.global.u64 %rd19, %rd14;
+.loc 3 609 10
+abs.f32 %f21, %f39;
+.loc 1 32 15
+cvt.f64.f32	%fd1, %f21;
+setp.lt.f64	%p7, %fd1, 0d3DDB7CDFD9D7BDBB;
+selp.f32	%f4, 0f2EDBE6FF, %f39, %p7;
+.loc 1 39 1
+mul.lo.s32 %r16, %r8, %r10;
+mul.wide.s32 %rd20, %r16, 4;
+add.s64 %rd24, %rd18, %rd20;
+add.s64 %rd23, %rd19, %rd20;
+add.s64 %rd22, %rd1, %rd20;
+mov.u32 %r18, 0;
+
+BB0_6:
+.loc 1 39 1
+ld.global.f32 %f24, [%rd22];
+.loc 4 1299 12
+mul.vf32 %f25, %f24, 0f3FB8AA3B;
+cvt.rzi.vf32.vf32	%f26, %f25;
+mov.f32 %f27, 0fBF317200;
+.loc 4 1299 12
+fma.rn.vf32 %f28, %f26, %f27, %f24;
+mov.f32 %f29, 0fB5BFBE8E;
+.loc 4 1299 12
+fma.rn.vf32 %f30, %f26, %f29, %f28;
+mul.vf32 %f23, %f30, 0f3FB8AA3B;
+
+	ex2.approx.ftz.vf32 %f22,%f23;
+
+	add.vf32 %f31, %f26, 0f00000000;
+ex2.approx.f32 %f32, %f31;
+mul.vf32 %f33, %f22, %f32;
+setp.lt.vf32	%p8, %f24, 0fC2D20000;
+selp.f32	%f34, 0f00000000, %f33, %p8;
+setp.gt.vf32	%p9, %f24, 0f42D20000;
+selp.f32	%f35, 0f7F800000, %f34, %p9;
+.loc 3 1472 5
+div.rn.vf32 %f36, %f35, %f4;
+.loc 1 39 70
+ld.global.f32 %f37, [%rd23];
+sub.vf32 %f38, %f36, %f37;
+st.global.f32 [%rd24], %f38;
+.loc 1 38 1
+add.s64 %rd24, %rd24, 4;
+add.s64 %rd23, %rd23, 4;
+add.s64 %rd22, %rd22, 4;
+.loc 1 38 18
+add.s32 %r18, %r18, 1;
+.loc 1 38 1
+setp.lt.s32	%p10, %r18, %r8;
+@%p10 bra BB0_6;
+
+BB0_7:
+.loc 1 42 2
+ret;
+}
+
+
+.visible .entry _Z24kSoftMaxCrossEntropyLossPfiiS_S_(
+.param .u64 _Z24kSoftMaxCrossEntropyLossPfiiS_S__param_0,
+.param .u32 _Z24kSoftMaxCrossEntropyLossPfiiS_S__param_1,
+.param .u32 _Z24kSoftMaxCrossEntropyLossPfiiS_S__param_2,
+.param .u64 _Z24kSoftMaxCrossEntropyLossPfiiS_S__param_3,
+.param .u64 _Z24kSoftMaxCrossEntropyLossPfiiS_S__param_4
+)
+{
+.reg .pred %p<14>;
+.reg .f32 %f<86>;
+.reg .b32 %r<23>;
+.reg .f64 %fd<2>;
+.reg .b64 %rd<21>;
+
+
+ld.param.u64 %rd13, [_Z24kSoftMaxCrossEntropyLossPfiiS_S__param_0];
+ld.param.u32 %r8, [_Z24kSoftMaxCrossEntropyLossPfiiS_S__param_1];
+ld.param.u32 %r9, [_Z24kSoftMaxCrossEntropyLossPfiiS_S__param_2];
+ld.param.u64 %rd11, [_Z24kSoftMaxCrossEntropyLossPfiiS_S__param_3];
+ld.param.u64 %rd12, [_Z24kSoftMaxCrossEntropyLossPfiiS_S__param_4];
+.loc 1 46 1
+cvta.to.global.u64 %rd1, %rd13;
+mov.u32 %r1, %ntid.x;
+mov.u32 %r2, %ctaid.x;
+mov.u32 %r3, %tid.x;
+mad.lo.s32 %r10, %r1, %r2, %r3;
+.loc 1 47 1
+setp.ge.s32	%p1, %r10, %r9;
+@%p1 bra BB1_10;
+
+mov.f32 %f13, 0f00000000;
+.loc 1 71 1
+setp.lt.s32	%p2, %r8, 1;
+mov.f32 %f84, %f13;
+@%p2 bra BB1_4;
+
+.loc 1 72 1
+mul.lo.s32 %r13, %r8, %r10;
+mul.wide.s32 %rd14, %r13, 4;
+add.s64 %rd18, %rd1, %rd14;
+mov.f32 %f85, 0f00000000;
+mov.u32 %r21, 0;
+
+BB1_3:
+.loc 1 72 1
+ld.global.f32 %f17, [%rd18];
+.loc 4 1299 12
+mul.vf32 %f18, %f17, 0f3FB8AA3B;
+cvt.rzi.vf32.vf32	%f19, %f18;
+mov.f32 %f20, 0fBF317200;
+.loc 4 1299 12
+fma.rn.vf32 %f21, %f19, %f20, %f17;
+mov.f32 %f22, 0fB5BFBE8E;
+.loc 4 1299 12
+fma.rn.vf32 %f23, %f19, %f22, %f21;
+mul.vf32 %f16, %f23, 0f3FB8AA3B;
+
+	ex2.approx.ftz.vf32 %f15,%f16;
+
+	add.vf32 %f24, %f19, 0f00000000;
+ex2.approx.f32 %f25, %f24;
+mul.vf32 %f26, %f15, %f25;
+setp.lt.vf32	%p3, %f17, 0fC2D20000;
+selp.f32	%f27, 0f00000000, %f26, %p3;
+setp.gt.vf32	%p4, %f17, 0f42D20000;
+selp.f32	%f28, 0f7F800000, %f27, %p4;
+.loc 1 72 128
+add.vf32 %f85, %f85, %f28;
+.loc 1 71 1
+add.s64 %rd18, %rd18, 4;
+.loc 1 71 18
+add.s32 %r21, %r21, 1;
+.loc 1 71 1
+setp.lt.s32	%p5, %r21, %r8;
+mov.f32 %f79, %f85;
+mov.f32 %f84, %f79;
+@%p5 bra BB1_3;
+
+BB1_4:
+.loc 1 80 1
+mov.f32 %f3, %f84;
+mov.f32 %f82, %f13;
+@%p2 bra BB1_9;
+
+.loc 1 46 1
+cvta.to.global.u64 %rd15, %rd11;
+.loc 3 609 10
+abs.f32 %f31, %f3;
+.loc 1 74 15
+cvt.f64.f32	%fd1, %f31;
+setp.lt.f64	%p7, %fd1, 0d3DDB7CDFD9D7BDBB;
+selp.f32	%f4, 0f2EDBE6FF, %f3, %p7;
+.loc 1 81 1
+mul.lo.s32 %r16, %r8, %r10;
+mul.wide.s32 %rd16, %r16, 4;
+add.s64 %rd20, %rd15, %rd16;
+add.s64 %rd19, %rd1, %rd16;
+mov.f32 %f83, 0f00000000;
+mov.u32 %r22, 0;
+
+BB1_6:
+.loc 1 81 1
+ld.global.f32 %f34, [%rd19];
+.loc 4 1299 12
+mul.vf32 %f35, %f34, 0f3FB8AA3B;
+cvt.rzi.vf32.vf32	%f36, %f35;
+mov.f32 %f37, 0fBF317200;
+.loc 4 1299 12
+fma.rn.vf32 %f38, %f36, %f37, %f34;
+mov.f32 %f39, 0fB5BFBE8E;
+.loc 4 1299 12
+fma.rn.vf32 %f40, %f36, %f39, %f38;
+mul.vf32 %f33, %f40, 0f3FB8AA3B;
+
+	ex2.approx.ftz.vf32 %f32,%f33;
+
+	add.vf32 %f41, %f36, 0f00000000;
+ex2.approx.f32 %f42, %f41;
+mul.vf32 %f43, %f32, %f42;
+setp.lt.vf32	%p8, %f34, 0fC2D20000;
+selp.f32	%f44, 0f00000000, %f43, %p8;
+setp.gt.vf32	%p9, %f34, 0f42D20000;
+selp.f32	%f45, 0f7F800000, %f44, %p9;
+.loc 3 1472 5
+div.rn.vf32 %f46, %f45, %f4;
+.loc 1 85 1
+ld.global.f32 %f6, [%rd20];
+.loc 4 1352 12
+setp.lt.vf32	%p10, %f46, 0f00800000;
+mul.vf32 %f47, %f46, 0f4B000000;
+selp.f32	%f7, %f47, %f46, %p10;
+selp.f32	%f48, 0fC1B80000, 0f00000000, %p10;
+mov.b32 %r17, %f7;
+add.s32 %r18, %r17, -1059760811;
+and.b32 %r19, %r18, -8388608;
+sub.s32 %r20, %r17, %r19;
+mov.b32 %f49, %r20;
+cvt.rn.f32.s32	%f50, %r19;
+mov.f32 %f51, 0f34000000;
+.loc 4 1352 12
+fma.rn.vf32 %f52, %f50, %f51, %f48;
+add.vf32 %f53, %f49, 0fBF800000;
+mov.f32 %f54, 0f3E1039F6;
+mov.f32 %f55, 0fBE055027;
+.loc 4 1352 12
+fma.rn.vf32 %f56, %f55, %f53, %f54;
+mov.f32 %f57, 0fBDF8CDCC;
+.loc 4 1352 12
+fma.rn.vf32 %f58, %f56, %f53, %f57;
+mov.f32 %f59, 0f3E0F2955;
+.loc 4 1352 12
+fma.rn.vf32 %f60, %f58, %f53, %f59;
+mov.f32 %f61, 0fBE2AD8B9;
+.loc 4 1352 12
+fma.rn.vf32 %f62, %f60, %f53, %f61;
+mov.f32 %f63, 0f3E4CED0B;
+.loc 4 1352 12
+fma.rn.vf32 %f64, %f62, %f53, %f63;
+mov.f32 %f65, 0fBE7FFF22;
+.loc 4 1352 12
+fma.rn.vf32 %f66, %f64, %f53, %f65;
+mov.f32 %f67, 0f3EAAAA78;
+.loc 4 1352 12
+fma.rn.vf32 %f68, %f66, %f53, %f67;
+mov.f32 %f69, 0fBF000000;
+.loc 4 1352 12
+fma.rn.vf32 %f70, %f68, %f53, %f69;
+mul.vf32 %f71, %f53, %f70;
+fma.rn.vf32 %f72, %f71, %f53, %f53;
+mov.f32 %f73, 0f3F317218;
+.loc 4 1352 12
+fma.rn.vf32 %f78, %f52, %f73, %f72;
+setp.lt.u32	%p11, %r17, 2139095040;
+@%p11 bra BB1_8;
+
+mov.f32 %f74, 0f7F800000;
+.loc 4 1352 12
+fma.rn.vf32 %f78, %f7, %f74, %f74;
+
+BB1_8:
+setp.eq.vf32	%p12, %f7, 0f00000000;
+selp.f32	%f75, 0fFF800000, %f78, %p12;
+.loc 1 85 123
+mul.vf32 %f76, %f6, %f75;
+sub.vf32 %f83, %f83, %f76;
+.loc 1 80 1
+add.s64 %rd20, %rd20, 4;
+add.s64 %rd19, %rd19, 4;
+.loc 1 80 18
+add.s32 %r22, %r22, 1;
+.loc 1 80 1
+setp.lt.s32	%p13, %r22, %r8;
+mov.f32 %f82, %f83;
+@%p13 bra BB1_6;
+
+BB1_9:
+.loc 1 46 1
+cvta.to.global.u64 %rd17, %rd12;
+.loc 3 1604 3
+atom.global.add.f32 %f77, [%rd17], %f82;
+
+BB1_10:
+.loc 1 89 2
+ret;
+}
+
+
+.visible .entry _Z28kSoftMaxCrossEntropyAccuracyPfiiS_S_(
+.param .u64 _Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_0,
+.param .u32 _Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_1,
+.param .u32 _Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_2,
+.param .u64 _Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_3,
+.param .u64 _Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_4
+)
+{
+.reg .pred %p<19>;
+.reg .f32 %f<59>;
+.reg .b32 %r<43>;
+.reg .f64 %fd<4>;
+.reg .b64 %rd<31>;
+
+
+ld.param.u64 %rd13, [_Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_0];
+ld.param.u32 %r17, [_Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_1];
+ld.param.u32 %r18, [_Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_2];
+ld.param.u64 %rd15, [_Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_3];
+ld.param.u64 %rd14, [_Z28kSoftMaxCrossEntropyAccuracyPfiiS_S__param_4];
+.loc 1 93 1
+cvta.to.global.u64 %rd1, %rd15;
+cvta.to.global.u64 %rd2, %rd13;
+mov.u32 %r1, %ntid.x;
+mov.u32 %r2, %ctaid.x;
+mov.u32 %r3, %tid.x;
+mad.lo.s32 %r4, %r1, %r2, %r3;
+.loc 1 94 1
+setp.ge.s32	%p1, %r4, %r18;
+@%p1 bra BB2_15;
+
+.loc 1 98 1
+mul.lo.s32 %r5, %r4, %r17;
+mov.f32 %f57, 0f00000000;
+.loc 1 97 1
+setp.lt.s32	%p2, %r17, 1;
+@%p2 bra BB2_4;
+
+.loc 1 98 1
+mul.lo.s32 %r21, %r17, %r4;
+mul.wide.s32 %rd16, %r21, 4;
+add.s64 %rd28, %rd2, %rd16;
+mov.f32 %f57, 0f00000000;
+mov.u32 %r33, 0;
+
+BB2_3:
+.loc 1 98 1
+ld.global.f32 %f13, [%rd28];
+.loc 4 1299 12
+mul.vf32 %f14, %f13, 0f3FB8AA3B;
+cvt.rzi.vf32.vf32	%f15, %f14;
+mov.f32 %f16, 0fBF317200;
+.loc 4 1299 12
+fma.rn.vf32 %f17, %f15, %f16, %f13;
+mov.f32 %f18, 0fB5BFBE8E;
+.loc 4 1299 12
+fma.rn.vf32 %f19, %f15, %f18, %f17;
+mul.vf32 %f12, %f19, 0f3FB8AA3B;
+
+	ex2.approx.ftz.vf32 %f11,%f12;
+
+	add.vf32 %f20, %f15, 0f00000000;
+ex2.approx.f32 %f21, %f20;
+mul.vf32 %f22, %f11, %f21;
+setp.lt.vf32	%p3, %f13, 0fC2D20000;
+selp.f32	%f23, 0f00000000, %f22, %p3;
+setp.gt.vf32	%p4, %f13, 0f42D20000;
+selp.f32	%f24, 0f7F800000, %f23, %p4;
+.loc 1 98 128
+add.vf32 %f57, %f57, %f24;
+.loc 1 97 1
+add.s64 %rd28, %rd28, 4;
+.loc 1 97 18
+add.s32 %r33, %r33, 1;
+.loc 1 97 1
+setp.lt.s32	%p5, %r33, %r17;
+@%p5 bra BB2_3;
+
+BB2_4:
+.loc 1 93 1
+cvta.to.global.u64 %rd6, %rd14;
+.loc 3 609 10
+abs.f32 %f27, %f57;
+.loc 1 100 15
+cvt.f64.f32	%fd1, %f27;
+setp.lt.f64	%p6, %fd1, 0d3DDB7CDFD9D7BDBB;
+selp.f32	%f4, 0f2EDBE6FF, %f57, %p6;
+.loc 1 105 1
+mul.wide.s32 %rd17, %r5, 4;
+add.s64 %rd18, %rd2, %rd17;
+ld.global.f32 %f28, [%rd18];
+.loc 4 1299 12
+mul.vf32 %f29, %f28, 0f3FB8AA3B;
+cvt.rzi.vf32.vf32	%f30, %f29;
+mov.f32 %f31, 0fBF317200;
+.loc 4 1299 12
+fma.rn.vf32 %f32, %f30, %f31, %f28;
+mov.f32 %f33, 0fB5BFBE8E;
+.loc 4 1299 12
+fma.rn.vf32 %f34, %f30, %f33, %f32;
+mul.vf32 %f26, %f34, 0f3FB8AA3B;
+
+	ex2.approx.ftz.vf32 %f25,%f26;
+
+	add.vf32 %f35, %f30, 0f00000000;
+ex2.approx.f32 %f36, %f35;
+mul.vf32 %f37, %f25, %f36;
+setp.lt.vf32	%p7, %f28, 0fC2D20000;
+selp.f32	%f38, 0f00000000, %f37, %p7;
+setp.gt.vf32	%p8, %f28, 0f42D20000;
+selp.f32	%f5, 0f7F800000, %f38, %p8;
+mov.u32 %r35, 0;
+.loc 1 106 1
+setp.lt.s32	%p9, %r17, 2;
+@%p9 bra BB2_7;
+
+.loc 3 1472 5
+div.rn.vf32 %f58, %f5, %f4;
+.loc 1 107 1
+mul.lo.s32 %r26, %r17, %r4;
+mul.wide.s32 %rd20, %r26, 4;
+add.s64 %rd21, %rd20, %rd2;
+add.s64 %rd29, %rd21, 4;
+mov.u32 %r35, 0;
+mov.u32 %r34, 1;
+
+BB2_6:
+.loc 1 107 1
+ld.global.f32 %f41, [%rd29];
+.loc 4 1299 12
+mul.vf32 %f42, %f41, 0f3FB8AA3B;
+cvt.rzi.vf32.vf32	%f43, %f42;
+fma.rn.vf32 %f45, %f43, %f31, %f41;
+fma.rn.vf32 %f47, %f43, %f33, %f45;
+mul.vf32 %f40, %f47, 0f3FB8AA3B;
+
+	ex2.approx.ftz.vf32 %f39,%f40;
+
+	add.vf32 %f48, %f43, 0f00000000;
+ex2.approx.f32 %f49, %f48;
+mul.vf32 %f50, %f39, %f49;
+setp.lt.vf32	%p10, %f41, 0fC2D20000;
+selp.f32	%f51, 0f00000000, %f50, %p10;
+setp.gt.vf32	%p11, %f41, 0f42D20000;
+selp.f32	%f52, 0f7F800000, %f51, %p11;
+.loc 3 1472 5
+div.rn.vf32 %f53, %f52, %f4;
+.loc 1 108 1
+setp.gt.vf32	%p12, %f53, %f58;
+selp.b32	%r35, %r34, %r35, %p12;
+selp.f32	%f58, %f53, %f58, %p12;
+.loc 1 106 1
+add.s64 %rd29, %rd29, 4;
+.loc 1 106 18
+add.s32 %r34, %r34, 1;
+.loc 1 106 1
+setp.lt.s32	%p13, %r34, %r17;
+@%p13 bra BB2_6;
+
+BB2_7:
+.loc 1 114 1
+@%p2 bra BB2_13;
+
+.loc 1 115 1
+mul.lo.s32 %r30, %r17, %r4;
+mul.wide.s32 %rd22, %r30, 4;
+add.s64 %rd30, %rd1, %rd22;
+mov.u32 %r40, -1;
+mov.u32 %r42, 0;
+
+BB2_9:
+.loc 1 115 1
+mov.u32 %r36, %r42;
+mov.u32 %r38, %r40;
+mov.u32 %r14, %r38;
+mov.u32 %r13, %r36;
+ld.global.f32 %f54, [%rd30];
+cvt.f64.f32	%fd2, %f54;
+setp.leu.f64	%p15, %fd2, 0d3FEFFFFFFFF24190;
+mov.u32 %r41, %r14;
+@%p15 bra BB2_12;
+
+.loc 1 116 1
+setp.eq.s32	%p16, %r14, -1;
+mov.u32 %r41, %r13;
+@%p16 bra BB2_12;
+
+.loc 1 116 1
+mov.u64 %rd23, $str;
+cvta.global.u64 %rd24, %rd23;
+mov.u64 %rd25, 0;
+.loc 1 116 1
+
+	{
+.reg .b32 temp_param_reg;
+
+	.param .b64 param0;
+st.param.b64	[param0+0], %rd24;
+.param .b64 param1;
+st.param.b64	[param1+0], %rd25;
+.param .b32 retval0;
+call.uni (retval0), 
+vprintf, 
+(
+param0, 
+param1
+);
+ld.param.b32	%r31, [retval0+0];
+
+
+	}
+	mov.u32 %r37, %r13;
+mov.u32 %r41, %r37;
+
+BB2_12:
+.loc 1 114 18
+mov.u32 %r39, %r41;
+mov.u32 %r40, %r39;
+.loc 1 114 1
+add.s64 %rd30, %rd30, 4;
+.loc 1 114 18
+add.s32 %r42, %r13, 1;
+.loc 1 114 1
+setp.lt.s32	%p17, %r42, %r17;
+@%p17 bra BB2_9;
+
+BB2_13:
+.loc 1 120 1
+add.s32 %r32, %r35, %r5;
+mul.wide.s32 %rd26, %r32, 4;
+add.s64 %rd27, %rd1, %rd26;
+ld.global.f32 %f55, [%rd27];
+cvt.f64.f32	%fd3, %f55;
+setp.leu.f64	%p18, %fd3, 0d3FEFFFFFFFF24190;
+@%p18 bra BB2_15;
+
+.loc 3 1604 3
+atom.global.add.f32 %f56, [%rd6], 0f3F800000;
+
+BB2_15:
+.loc 1 124 2
+ret;
+}
+
+.file	1 "/home/evan/Projects/sim-dl-runner/programs/MLP2/./src/loss/crossentropy.cu", 1612708987, 6419
+.file	2 "/usr/local/cuda-8.0/include/cuda_device_runtime_api.h", 1596964847, 13858
+.file	3 "/usr/local/cuda-8.0/include/device_functions.hpp", 1596964847, 164382
+.file	4 "/usr/local/cuda-8.0/include/math_functions.hpp", 1596964847, 101396
+.file	5 "/usr/local/cuda/bin/..//include/sm_20_atomic_functions.hpp", 1596964847, 3961
+

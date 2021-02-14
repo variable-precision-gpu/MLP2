@@ -1,0 +1,134 @@
+
+
+
+
+
+
+
+
+.version 5.0
+.target sm_61
+.address_size 64
+
+
+
+.visible .entry _Z4kAddPfS_i(
+.param .u64 _Z4kAddPfS_i_param_0,
+.param .u64 _Z4kAddPfS_i_param_1,
+.param .u32 _Z4kAddPfS_i_param_2
+)
+{
+.reg .pred %p<2>;
+.reg .f32 %f<4>;
+.reg .b32 %r<3>;
+.reg .b64 %rd<8>;
+
+
+ld.param.u64 %rd1, [_Z4kAddPfS_i_param_0];
+ld.param.u64 %rd2, [_Z4kAddPfS_i_param_1];
+ld.param.u32 %r2, [_Z4kAddPfS_i_param_2];
+.loc 1 5 1
+mov.u32 %r1, %ctaid.x;
+.loc 1 6 1
+setp.ge.s32	%p1, %r1, %r2;
+@%p1 bra BB0_2;
+
+.loc 1 5 1
+cvta.to.global.u64 %rd3, %rd2;
+.loc 1 7 1
+mul.wide.s32 %rd4, %r1, 4;
+add.s64 %rd5, %rd3, %rd4;
+.loc 1 5 1
+cvta.to.global.u64 %rd6, %rd1;
+.loc 1 7 1
+add.s64 %rd7, %rd6, %rd4;
+ld.global.f32 %f1, [%rd7];
+ld.global.f32 %f2, [%rd5];
+add.vf32 %f3, %f2, %f1;
+st.global.f32 [%rd7], %f3;
+
+BB0_2:
+.loc 1 9 2
+ret;
+}
+
+
+.visible .entry _Z9kSubtractPfS_i(
+.param .u64 _Z9kSubtractPfS_i_param_0,
+.param .u64 _Z9kSubtractPfS_i_param_1,
+.param .u32 _Z9kSubtractPfS_i_param_2
+)
+{
+.reg .pred %p<2>;
+.reg .f32 %f<4>;
+.reg .b32 %r<3>;
+.reg .b64 %rd<8>;
+
+
+ld.param.u64 %rd1, [_Z9kSubtractPfS_i_param_0];
+ld.param.u64 %rd2, [_Z9kSubtractPfS_i_param_1];
+ld.param.u32 %r2, [_Z9kSubtractPfS_i_param_2];
+.loc 1 13 1
+mov.u32 %r1, %ctaid.x;
+.loc 1 14 1
+setp.ge.s32	%p1, %r1, %r2;
+@%p1 bra BB1_2;
+
+.loc 1 13 1
+cvta.to.global.u64 %rd3, %rd2;
+.loc 1 15 1
+mul.wide.s32 %rd4, %r1, 4;
+add.s64 %rd5, %rd3, %rd4;
+.loc 1 13 1
+cvta.to.global.u64 %rd6, %rd1;
+.loc 1 15 1
+add.s64 %rd7, %rd6, %rd4;
+ld.global.f32 %f1, [%rd7];
+ld.global.f32 %f2, [%rd5];
+sub.vf32 %f3, %f1, %f2;
+st.global.f32 [%rd7], %f3;
+
+BB1_2:
+.loc 1 17 2
+ret;
+}
+
+
+.visible .entry _Z6kScalePffi(
+.param .u64 _Z6kScalePffi_param_0,
+.param .f32 _Z6kScalePffi_param_1,
+.param .u32 _Z6kScalePffi_param_2
+)
+{
+.reg .pred %p<2>;
+.reg .f32 %f<4>;
+.reg .b32 %r<3>;
+.reg .b64 %rd<5>;
+
+
+ld.param.u64 %rd1, [_Z6kScalePffi_param_0];
+ld.param.f32 %f1, [_Z6kScalePffi_param_1];
+ld.param.u32 %r2, [_Z6kScalePffi_param_2];
+.loc 1 21 1
+mov.u32 %r1, %ctaid.x;
+.loc 1 22 1
+setp.ge.s32	%p1, %r1, %r2;
+@%p1 bra BB2_2;
+
+.loc 1 21 1
+cvta.to.global.u64 %rd2, %rd1;
+.loc 1 23 1
+mul.wide.s32 %rd3, %r1, 4;
+add.s64 %rd4, %rd2, %rd3;
+ld.global.f32 %f2, [%rd4];
+mul.vf32 %f3, %f2, %f1;
+st.global.f32 [%rd4], %f3;
+
+BB2_2:
+.loc 1 25 2
+ret;
+}
+
+.file	1 "/home/evan/Projects/sim-dl-runner/programs/MLP2/./src/tensor/tensor1d.cu", 1612257611, 1712
+.file	2 "/usr/local/cuda-8.0/include/cuda_device_runtime_api.h", 1596964847, 13858
+
