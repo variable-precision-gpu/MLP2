@@ -13,3 +13,6 @@ data/
 # Python stuff
 venv
 *.pyc
+
+# vscode
+.vscode/
