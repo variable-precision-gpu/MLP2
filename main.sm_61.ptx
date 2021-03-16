@@ -11,6 +11,6 @@
 .address_size 64
 
 
-.file	1 "/home/evan/Projects/sim-dl-runner/programs/MLP2/./src/main.cu", 1612710571, 5440
+.file	1 "/home/evan/Projects/sim-dl-runner/programs/MLP2/./src/main.cu", 1615873278, 5160
 .file	2 "/usr/local/cuda-8.0/include/cuda_device_runtime_api.h", 1596964847, 13858
 

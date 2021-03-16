@@ -141,6 +141,6 @@ BB1_3:
 ret;
 }
 
-.file	1 "/home/evan/Projects/sim-dl-runner/programs/MLP2/./src/layers/relu.cu", 1612709084, 2561
+.file	1 "/home/evan/Projects/sim-dl-runner/programs/MLP2/./src/layers/relu.cu", 1615638029, 2421
 .file	2 "/usr/local/cuda-8.0/include/cuda_device_runtime_api.h", 1596964847, 13858
 

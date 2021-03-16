@@ -1,4 +1,4 @@
-ptxas info    : 97 bytes gmem
+ptxas info    : 80 bytes gmem
 ptxas info    : Compiling entry function '_Z24kSoftMaxCrossEntropyLossPfiiS_S_' for 'sm_61'
 ptxas info    : Function properties for _Z24kSoftMaxCrossEntropyLossPfiiS_S_
     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
