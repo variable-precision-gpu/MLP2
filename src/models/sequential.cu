@@ -15,13 +15,13 @@ Tensor2D* SequentialModel::forward(Tensor2D* input) {
     Tensor2D* values = input;
     int i = 0;
     for (std::vector<Layer*>::iterator layer = layers.begin(); layer != layers.end(); layer++) {
-        if (i == 0) {
-            setenv("VF_SIGNIFICAND","2",1);
-        } else if (i == 2) {
-            setenv("VF_SIGNIFICAND","2",1);
-        } else if (i == 4) {
-            setenv("VF_SIGNIFICAND","2",1);
-        }
+        // if (i == 0) {
+        //     setenv("VF_SIGNIFICAND","2",1);
+        // } else if (i == 2) {
+        //     setenv("VF_SIGNIFICAND","2",1);
+        // } else if (i == 4) {
+        //     setenv("VF_SIGNIFICAND","2",1);
+        // }
         i++;
         values = (*layer)->forward(values);
         #if defined(DEBUG) && DEBUG >= 2
