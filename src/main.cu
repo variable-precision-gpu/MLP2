@@ -72,6 +72,10 @@ void test(SequentialModel* model, CrossEntropyLoss* loss) {
 
       // Forward pass
       Tensor2D* output = model->forward(images);
+      // [afterdusk] Uncomment to set precision of softmax
+      // setenv("VF_SIGNIFICAND","24",1);
+      // setenv("VF_EXPONENT_MIN", "-148", 1);
+      // setenv("VF_EXPONENT_MAX", "128", 1);
 
       // Print error
       testLoss += loss->getLoss(output, labels);

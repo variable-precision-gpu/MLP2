@@ -15,14 +15,21 @@ Tensor2D* SequentialModel::forward(Tensor2D* input) {
     Tensor2D* values = input;
     int i = 0;
     for (std::vector<Layer*>::iterator layer = layers.begin(); layer != layers.end(); layer++) {
+        // [afterdusk] Uncomment to set precision of layers
         // if (i == 0) {
-        //     setenv("VF_SIGNIFICAND","2",1);
+        //     setenv("VF_SIGNIFICAND","4",1);
+        //     setenv("VF_EXPONENT_MIN", "-32", 1);
+        //     setenv("VF_EXPONENT_MAX", "32", 1);
         // } else if (i == 2) {
-        //     setenv("VF_SIGNIFICAND","2",1);
+        //     setenv("VF_SIGNIFICAND","3",1);
+        //     setenv("VF_EXPONENT_MIN", "-31", 1);
+        //     setenv("VF_EXPONENT_MAX", "32", 1);
         // } else if (i == 4) {
         //     setenv("VF_SIGNIFICAND","2",1);
+        //     setenv("VF_EXPONENT_MIN", "-30", 1);
+        //     setenv("VF_EXPONENT_MAX", "32", 1);
         // }
-        i++;
+        // i++;
         values = (*layer)->forward(values);
         #if defined(DEBUG) && DEBUG >= 2
         DEBUG_PRINT("Forward pass for Layer %d:\n", (*layer));
