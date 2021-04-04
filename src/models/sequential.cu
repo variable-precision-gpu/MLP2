@@ -15,16 +15,25 @@ Tensor2D* SequentialModel::forward(Tensor2D* input) {
     Tensor2D* values = input;
     int i = 0;
     for (std::vector<Layer*>::iterator layer = layers.begin(); layer != layers.end(); layer++) {
-        if (i == 0) {
-            setenv("VF_SIGNIFICAND","8",1);
-        } else if (i == 2) {
-            setenv("VF_SIGNIFICAND","8",1);
-        } else if (i == 4) {
-            setenv("VF_SIGNIFICAND","4",1);
-        } else if (i == 6) {
-            setenv("VF_SIGNIFICAND","4",1);
-        }
-        i++;
+        // [afterdusk] Uncomment to set precision of layers
+        // if (i == 0) {
+        //     setenv("VF_SIGNIFICAND","8",1);
+        //     setenv("VF_EXPONENT_MIN", "-132", 1);
+        //     setenv("VF_EXPONENT_MAX", "128", 1);
+        // } else if (i == 2) {
+        //     setenv("VF_SIGNIFICAND","8",1);
+        //     setenv("VF_EXPONENT_MIN", "-132", 1);
+        //     setenv("VF_EXPONENT_MAX", "128", 1);
+        // } else if (i == 4) {
+        //     setenv("VF_SIGNIFICAND","4",1);
+        //     setenv("VF_EXPONENT_MIN", "-128", 1);
+        //     setenv("VF_EXPONENT_MAX", "128", 1);
+        // } else if (i == 6) {
+        //     setenv("VF_SIGNIFICAND","4",1);
+        //     setenv("VF_EXPONENT_MIN", "-128", 1);
+        //     setenv("VF_EXPONENT_MAX", "128", 1);
+        // }
+        // i++;
         values = (*layer)->forward(values);
         #if defined(DEBUG) && DEBUG >= 2
         DEBUG_PRINT("Forward pass for Layer %d:\n", (*layer));
